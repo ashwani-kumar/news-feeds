@@ -9,14 +9,46 @@
         android:layout="@layout/fragment_news_feed">
 
         <action android:id="@+id/news_feed_to_news_detail_action"
-        app:destination="@id/news_detail_fragment"/>
+        app:destination="@id/news_detail_fragment">
+            <argument
+                android:name="image_url"
+                android:defaultValue=''
+                app:argType="string" />
+            <argument
+                android:name="title"
+                android:defaultValue=''
+                app:argType="string" />
+            <argument
+                android:name="content"
+                android:defaultValue=''
+                app:argType="string" />
+            <argument
+                android:name="date"
+                android:defaultValue=''
+                app:argType="string" />
+        </action>
 
     </fragment>
 
     <fragment android:id="@+id/news_detail_fragment"
         android:name="com.example.myapplication.home.view.NewsDetailFragment"
         android:layout="@layout/fragment_news_detail">
-
+        <argument
+            android:name="image_url"
+            android:defaultValue=''
+            app:argType="string" />
+        <argument
+            android:name="title"
+            android:defaultValue=''
+            app:argType="string" />
+        <argument
+            android:name="content"
+            android:defaultValue=''
+            app:argType="string" />
+        <argument
+            android:name="date"
+            android:defaultValue=''
+            app:argType="string" />
     </fragment>
 
 </navigation>

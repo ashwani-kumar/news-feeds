@@ -5,6 +5,23 @@
     app:startDestination="@+id/news_detail_fragment">
     <fragment android:id="@+id/news_detail_fragment"
         android:name="com.example.myapplication.home.view.NewsDetailFragment"
-        android:layout="@layout/fragment_news_detail"/>
+        android:layout="@layout/fragment_news_detail">
+        <argument
+            android:name="image_url"
+            android:defaultValue=''
+            app:argType="string" />
+        <argument
+            android:name="title"
+            android:defaultValue=''
+            app:argType="string" />
+        <argument
+            android:name="content"
+            android:defaultValue=''
+            app:argType="string" />
+        <argument
+            android:name="date"
+            android:defaultValue=''
+            app:argType="string" />
+    </fragment>
 
 </navigation>
