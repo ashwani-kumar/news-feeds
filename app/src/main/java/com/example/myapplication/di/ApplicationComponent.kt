@@ -1,5 +1,6 @@
 package com.example.myapplication.di
 
+import com.example.myapplication.details.view.NewsDetailFragment
 import com.example.myapplication.home.view.MainActivity
 import com.example.myapplication.home.view.NewsFeedListFragment
 import dagger.Component
@@ -10,4 +11,5 @@ import javax.inject.Singleton
 interface ApplicationComponent {
     //fun inject(mainActivity: MainActivity)
     fun inject(newsFeedListFragment: NewsFeedListFragment)
+    fun inject(newsFeedListFragment: NewsDetailFragment)
 }

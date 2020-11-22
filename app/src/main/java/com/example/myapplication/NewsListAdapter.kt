@@ -1,14 +1,11 @@
 package com.example.myapplication
 
-import android.graphics.Color
-import android.text.Layout
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.myapplication.home.entity.Articles
-import java.util.zip.Inflater
+import com.example.myapplication.entity.Articles
 
 class NewsListAdapter(var list: ArrayList<Articles>): RecyclerView.Adapter<ItemViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {

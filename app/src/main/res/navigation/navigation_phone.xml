@@ -31,7 +31,7 @@
     </fragment>
 
     <fragment android:id="@+id/news_detail_fragment"
-        android:name="com.example.myapplication.home.view.NewsDetailFragment"
+        android:name="com.example.myapplication.details.view.NewsDetailFragment"
         android:layout="@layout/fragment_news_detail">
         <argument
             android:name="image_url"

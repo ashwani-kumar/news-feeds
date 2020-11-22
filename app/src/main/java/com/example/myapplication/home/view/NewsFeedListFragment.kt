@@ -12,8 +12,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.NewsFeedApplication
 import com.example.myapplication.NewsListAdapter
 import com.example.myapplication.R
-import com.example.myapplication.home.entity.Articles
-import com.example.myapplication.home.viewmodel.MyViewModel
+import com.example.myapplication.entity.Articles
+import com.example.myapplication.home.viewmodel.NewsFeedViewModel
 import javax.inject.Inject
 
 class NewsFeedListFragment:Fragment() {
@@ -21,7 +21,7 @@ class NewsFeedListFragment:Fragment() {
     private lateinit var recyclerView: RecyclerView
 
     @Inject
-    lateinit var vm: MyViewModel
+    lateinit var vm: NewsFeedViewModel
 
 
     override fun onCreateView(

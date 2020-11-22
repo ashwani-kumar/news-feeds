@@ -1,6 +1,6 @@
-package com.example.myapplication.home.service
+package com.example.myapplication.service
 
-import com.example.myapplication.home.entity.Json4Kotlin_Base
+import com.example.myapplication.entity.Json4Kotlin_Base
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Query

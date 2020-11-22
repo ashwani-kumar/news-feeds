@@ -1,7 +1,6 @@
-package com.example.myapplication.home.view
+package com.example.myapplication.details.view
 
 import android.graphics.Bitmap
-import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,16 +9,21 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.navigation.fragment.navArgs
+import com.example.myapplication.NewsFeedApplication
 import com.example.myapplication.R
+import com.example.myapplication.details.viewmodel.NewsDetailViewModel
+import com.example.myapplication.utils.toBitmap
 import kotlinx.coroutines.*
-import org.w3c.dom.Text
-import java.io.IOException
 import java.net.URL
+import javax.inject.Inject
 
 class NewsDetailFragment: Fragment() {
 
     private val args by navArgs<NewsDetailFragmentArgs>()
+    @Inject
+    lateinit var vm: NewsDetailViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -27,6 +31,7 @@ class NewsDetailFragment: Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         super.onCreateView(inflater, container, savedInstanceState)
+        (requireActivity().application as NewsFeedApplication).component.inject(this)
         return inflater.inflate(R.layout.fragment_news_detail, container, false)
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -36,30 +41,15 @@ class NewsDetailFragment: Fragment() {
 
         if(!args.imageUrl.isNullOrEmpty()){
             val url = URL(args.imageUrl)
-            val result: Deferred<Bitmap?> = GlobalScope.async {
-                url.toBitmap()
-            }
-            GlobalScope.launch(Dispatchers.Main) {
-                // get the downloaded bitmap
-                val bitmap : Bitmap? = result.await()
-
-                // if downloaded then saved it to internal storage
-                bitmap?.apply {
-                    imageView.setImageBitmap(bitmap)
+            vm.getImage(url)
+            vm.image.observe(viewLifecycleOwner, Observer {
+                if(it != null) {
+                    imageView.setImageBitmap(it)
                 }
-            }
-            imageView.setImageURI(Uri.parse(args.imageUrl))
+            })
         }
         if(!args.content.isNullOrEmpty()){
             textView.text = args.content
         }
-    }
-}
-
-fun URL.toBitmap(): Bitmap?{
-    return try {
-        BitmapFactory.decodeStream(openStream())
-    }catch (e:IOException){
-        null
     }
 }
